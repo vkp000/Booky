@@ -1,11 +1,9 @@
-import React from "react";
-import Navbar from "../components/Navbar";
+import React from "react"; 
 import ProfileCard from "../components/ProfileCard"; // ✅ make sure you have this
 
 export default function Profile() {
   return (
-    <>
-      <Navbar />
+    <> 
       <div className="pt-20 max-w-4xl mx-auto px-4 flex gap-6">
         {/* Left Sidebar */}
         <div className="w-1/4">
@@ -56,7 +54,7 @@ export default function Profile() {
             </p>
           </div>
         </div>
-        
+
 
       </div>
     </>

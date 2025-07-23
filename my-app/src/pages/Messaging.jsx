@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar";
+import React, { useState } from "react"; 
 
 const dummyMessages = {
   Alice: [
@@ -28,8 +27,7 @@ const Messaging = () => {
   };
 
   return (
-    <>
-    <Navbar />
+    <> 
     <div className="pt-[56px] flex h-[calc(100vh-56px)] bg-white">
       {/* Sidebar */}
       <aside className="w-[320px] border-r border-gray-200 bg-[#f3f2ef]">

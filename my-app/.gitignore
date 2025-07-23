@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/node_modules
+/.env
+/.vscode
+/dist
+.DS_Store

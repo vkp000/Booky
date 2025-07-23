@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Navbar from "../components/Navbar";
+import { useState } from "react"; 
 import ProfileCard from "../components/ProfileCard"; // ✅ Import card
+import useIsMobile from "../helpers/isMobile";
 
 const dummyNotifications = [
   {
@@ -28,18 +28,19 @@ const dummyNotifications = [
 
 export default function Notifications() {
   const [notifications] = useState(dummyNotifications);
-
+  const isMobile = useIsMobile()
   return (
-    <>
-      <Navbar />
+    <> 
       <div className="pt-20 max-w-6xl mx-auto px-4 flex gap-6">
         {/* Left Sidebar */}
-        <div className="w-1/5">
+        {!isMobile && (
+        <div className="w-1/4">
           <ProfileCard />
         </div>
+      )}
 
         {/* Notifications List */}
-        <div className="w-2/3">
+        <div className="w-full">
           <h2 className="text-xl font-semibold mb-4">Notifications</h2>
           <div className="space-y-4">
             {notifications.map((notif) => (
