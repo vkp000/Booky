@@ -3,24 +3,31 @@ import IconButton from "../../utilitis/IconButton";
 import { FaRegCommentDots, FaShoppingCart } from "react-icons/fa"; // For Review
 import { MdRepeat } from "react-icons/md";         // For Repost
 import { BiShareAlt } from "react-icons/bi";       // For Share
-import ActionMenuButton from "../../utilitis/ActionMenuButton";
+import ActionMenuButton from "../ActionMenuButton";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({ post }) {
+  const navigate = useNavigate();
     const isMobile = window.innerWidth < 768;
   return (
     <div className="bg-white rounded-md shadow-sm p-4 mb-4">
       {/* Header */}
       <div className="flex items-center gap-3 mb-2">
-        <img
+        <IconButton onClick={() => navigate("/profile")}>
+          <img
           src={post.avatar}
           alt="user"
           className="w-10 h-10 rounded-full object-cover"
         />
+        </IconButton>
         <div>
+          <IconButton onClick={() => navigate("/profile")}>
           <h4 className="font-semibold text-sm">{post.name}</h4>
+        </IconButton>
           <p className="text-xs text-gray-500">{post.time}</p>
         </div>
       </div>
+      
 
       {/* Caption */}
       <p className="text-sm text-gray-800 mb-3">{post.caption}</p>

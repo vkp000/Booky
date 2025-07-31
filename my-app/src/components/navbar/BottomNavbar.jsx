@@ -1,11 +1,20 @@
-import { FaHome, FaUsers, FaBriefcase, FaEnvelope, FaBell, FaBook } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaHome, FaUsers, FaBriefcase, FaEnvelope, FaBell, FaBook, FaPlus } from "react-icons/fa";
 import NavItem from "./NavItem"; // Adjust the path as needed
 
+
 export default function BottomNavbar() {
-  const isMobile = window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-white shadow-inner border-t z-50 flex justify-around py-2 text-xs text-gray-600">
+    <div className="fixed bottom-0 left-0 w-full bg-white shadow-inner border-t z-50 flex justify-around py-2 text-xs text-gray-600 h-[56px]">
       <NavItem
         icon={<FaHome size={isMobile ? 16 : 18} />}
         label="Home"
@@ -20,6 +29,11 @@ export default function BottomNavbar() {
         icon={<FaBook size={isMobile ? 16 : 18} />}
         label="Book"
         to="/books"
+      />
+      <NavItem
+        icon={<FaPlus size={isMobile ? 16 : 18} />}
+        label="Post"
+        to="/addpost"
       />
       <NavItem
         icon={<FaEnvelope size={isMobile ? 16 : 18} />}

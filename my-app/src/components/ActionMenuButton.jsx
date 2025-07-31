@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { FaPlus, FaRegFileAlt } from "react-icons/fa";
-import { HiOutlinePhotograph, HiOutlineVideoCamera } from "react-icons/hi";
+import { FiArrowDownCircle } from "react-icons/fi";
+import { FaShoppingBag } from "react-icons/fa";
+import { HiSwitchHorizontal } from "react-icons/hi";
 
-export default function AddPostButton({ isMobile }) {
+export default function ActionMenuButton({ isMobile }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -36,25 +37,26 @@ export default function AddPostButton({ isMobile }) {
           flex flex-col space-y-1 items-center justify-center
           text-sm text-gray-600 hover:bg-gray-200 hover:text-blue-600
           transition rounded-md py-2 px-3 w-full
+          cursor-pointer
         `}
       >
-        <FaPlus size={isMobile ? 16 : 18} />
-        <span>Post</span>
+        <FaShoppingBag size={isMobile ? 16 : 18} />
+        <span>Own</span>
       </button>
 
       {open && (
         <div className="absolute right-0 mt-2 w-44 bg-white border rounded-md shadow-lg z-20 p-1">
-          <button className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md">
-            <FaRegFileAlt size={18} />
-            Write Article
+          <button className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md cursor-pointer">
+            <FiArrowDownCircle size={18} />
+            Borrow Request
           </button>
-          <button className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md">
-            <HiOutlinePhotograph size={18} />
-            Photo Post
+          <button className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md cursor-pointer">
+            <FaShoppingBag size={18} />
+            Buy
           </button>
-          <button className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md">
-            <HiOutlineVideoCamera size={18} />
-            Video Post
+          <button className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md cursor-pointer">
+            <HiSwitchHorizontal size={18} />
+            Exchange
           </button>
         </div>
       )}

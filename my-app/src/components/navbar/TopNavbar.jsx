@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import IconButton from "../../utilitis/IconButton";
 
 export default function TopNavbar() {
+  const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
   // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setShowDropdown(false);
       }
     };
@@ -25,7 +24,13 @@ export default function TopNavbar() {
   return (
     <div className="fixed top-0 left-0 w-full bg-white shadow z-50 flex items-center justify-between px-4 py-2 border-b">
       {/* Logo */}
-      <div className="text-xl font-bold">📚 Booky</div>
+      <IconButton
+      icon="📚"
+      label="Booky"
+      className="text-xl font-bold"
+      direction="row"
+      onClick={() => navigate("/dashboard")} // 👈 Your target route
+    />
 
       {/* Search */}
       <div className="flex-1 mx-4">
@@ -40,7 +45,7 @@ export default function TopNavbar() {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setShowDropdown((prev) => !prev)}
-          className="flex items-center gap-2 hover:bg-gray-100 px-2 py-1 rounded"
+          className="flex items-center gap-2 hover:bg-gray-100 px-2 py-1 rounded cursor-pointer"
         >
           <img
             src="https://www.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg"

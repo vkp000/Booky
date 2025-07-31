@@ -1,15 +1,32 @@
+// src/App.js
+
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import appRoutes from "./routes/routes";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
+import { appRoutes, publicRoutes } from "./routes/routes";
+
+function AppRoutes() {
+  const location = useLocation();
+  const isPublicRoute = ["/", "/login", "/register"].includes(location.pathname);
+
+  return (
+    <Routes>
+      {isPublicRoute ? publicRoutes : appRoutes.map(route => (
+        <Route
+          key={route.key}
+          path={route.props.path}
+          element={<AppLayout>{route.props.element}</AppLayout>}
+        />
+      ))}
+    </Routes>
+  );
+}
 
 function App() {
   return (
-    
-      <AppLayout>
-        <Routes>{appRoutes}</Routes>
-      </AppLayout>
-    
+    // <Router>
+      <AppRoutes />
+    // {/* </Router> */}
   );
 }
 

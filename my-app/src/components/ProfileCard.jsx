@@ -17,7 +17,7 @@ const ProfileCard = () => {
         <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
           MERN Stack Developer | Building Digital Products
         </p>
-        <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-full">
+        <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-full cursor-pointer">
           Connect
         </button>
       </div>
